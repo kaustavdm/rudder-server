@@ -8,9 +8,6 @@ phases:
       golang: 1.13
     commands: 
       - git init
-      - git remote add origin git://github.com/rudderlabs/rudder-server.git
-      - git fetch
-      - git checkout $CODEBUILD_RESOLVED_SOURCE_VERSION
       - sed -i.bak 's|git@github.com:|git://github.com/|g' .gitmodules
       - git submodule init
       - git submodule update --recursive
