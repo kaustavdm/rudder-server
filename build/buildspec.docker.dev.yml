@@ -1,7 +1,7 @@
 version: 0.2
 env:
   parameter-store:
-    ssh_key: "/dev/codebuild/rudder-transformer/git-deploy-key"
+    ssh_key: "/codebuild/github/ssh-key"
     dockerhub_passwd: "/dev/codebuild/dockerhub-password"
 phases:
   install:
