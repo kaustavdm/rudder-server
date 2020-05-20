@@ -32,7 +32,7 @@ phases:
 
       - echo build Docker image on `date`
       - docker build -t rudderlabs/develop-rudder-server:$VERSION -f build/Dockerfile-aws .
-      - ls
+      - ls -list
       - ls rudder-transformer
       - printenv
 
