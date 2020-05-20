@@ -34,6 +34,7 @@ phases:
       - docker build -t rudderlabs/develop-rudder-server:$VERSION -f build/Dockerfile-aws .
       - ls
       - ls rudder-transformer
+      - printenv
 
 
       - sed -i -e 's/^CONFIG_BACKEND_URL=.*$/CONFIG_BACKEND_URL=https:\/\/api.rudderlabs.com/' build/docker.env
