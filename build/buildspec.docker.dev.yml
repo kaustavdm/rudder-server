@@ -22,7 +22,7 @@ phases:
       - docker login --username rudderlabs --password $dockerhub_passwd
   build:
     commands:
-      -ls
+      - ls
       - export GO111MODULE=on
       - DATE=$(date "+%F,%T")
       - VERSION=$(echo $GIT_BRANCH | tr "/" .)
