@@ -44,7 +44,6 @@ phases:
       - sed -i -e 's/^CONFIG_PATH=.*$/CONFIG_PATH=\/app\/tests\/e2e\/config.toml/' build/docker.env
       - cat build/docker.env
       - cat tests/e2e/config.toml
-      - ls -list
       - ls build
       - docker-compose -f build/docker-compose.codebuild-integration-tests.yml up -d
       - docker-compose -f build/docker-compose.codebuild-integration-tests.yml exec -T backend sh -c "CGO_ENABLED=0 ginkgo tests/e2e"
