@@ -17,12 +17,12 @@ phases:
       - cd app
       - git clone --recurse-submodules git@github.com:rudderlabs/rudder-server.git
       - cd rudder-server
-      - ls rudder-transformer
   pre_build:
     commands:
       - docker login --username rudderlabs --password $dockerhub_passwd
   build:
     commands:
+      -ls
       - export GO111MODULE=on
       - DATE=$(date "+%F,%T")
       - VERSION=$(echo $GIT_BRANCH | tr "/" .)
@@ -43,6 +43,7 @@ phases:
       - sed -i -e 's/^CONFIG_PATH=.*$/CONFIG_PATH=\/app\/tests\/e2e\/config.toml/' build/docker.env
       - cat build/docker.env
       - cat tests/e2e/config.toml
+      - ls -list
       - docker-compose -f build/docker-compose.codebuild-integration-tests.yml up -d
       - docker-compose -f build/docker-compose.codebuild-integration-tests.yml exec -T backend sh -c "CGO_ENABLED=0 ginkgo tests/e2e"
 
