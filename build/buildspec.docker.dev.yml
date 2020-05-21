@@ -17,6 +17,8 @@ phases:
       - cd app
       - git clone --recurse-submodules git@github.com:rudderlabs/rudder-server.git
       - cd rudder-server
+      - git checkout $CODEBUILD_RESOLVED_SOURCE_VERSION
+      - pwd
   pre_build:
     commands:
       - docker login --username rudderlabs --password $dockerhub_passwd
@@ -35,8 +37,7 @@ phases:
       - docker build -t rudderlabs/develop-rudder-server:$VERSION -f build/Dockerfile-aws .
       - ls -list
       - ls rudder-transformer
-      - printenv
-
+      - pwd
 
       - sed -i -e 's/^CONFIG_BACKEND_URL=.*$/CONFIG_BACKEND_URL=https:\/\/api.rudderlabs.com/' build/docker.env
       - go run tests/helpers/tomlmerge/toml_merge.go config/config.toml tests/e2e/config_overrides.toml > tests/e2e/config.toml
