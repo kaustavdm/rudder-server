@@ -12,13 +12,13 @@ phases:
       - echo "$ssh_key" > ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
       - ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
-      - git config --global url."git@github.com:".insteadOf "https://github.com/"
-      - mkdir app
-      - cd app
-      - git clone --recurse-submodules git@github.com:rudderlabs/rudder-server.git
-      - cd rudder-server
-      - git checkout $CODEBUILD_RESOLVED_SOURCE_VERSION
-      - pwd
+      # - git config --global url."git@github.com:".insteadOf "https://github.com/"
+      # - mkdir app
+      # - cd app
+      # - git clone --recurse-submodules git@github.com:rudderlabs/rudder-server.git
+      # - cd rudder-server
+      # - git checkout $CODEBUILD_RESOLVED_SOURCE_VERSION
+      - git submodule init && git submodule update
   pre_build:
     commands:
       - docker login --username rudderlabs --password $dockerhub_passwd
