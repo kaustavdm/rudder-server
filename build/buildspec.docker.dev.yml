@@ -33,8 +33,8 @@ phases:
       - go get github.com/onsi/ginkgo/ginkgo
       - ginkgo --randomizeAllSpecs --randomizeSuites --failOnPending --cover -coverprofile=profile.out -covermode=atomic --trace --progress -p --skipPackage=tests ./...
 
-      - echo build Docker image on `date`
-      - docker build -t rudderlabs/develop-rudder-server:$VERSION -f build/Dockerfile-aws .
+      # - echo build Docker image on `date`
+      # - docker build -t rudderlabs/develop-rudder-server:$VERSION -f build/Dockerfile-aws .
       - ls -list
       - ls rudder-transformer
       - pwd
@@ -65,9 +65,9 @@ phases:
 
   post_build:
     commands:
-      - echo build Docker image complete `date`
-      - echo push latest Docker images to docker hub...
-      - docker push rudderlabs/develop-rudder-server:$VERSION
+      # - echo build Docker image complete `date`
+      # - echo push latest Docker images to docker hub...
+      # - docker push rudderlabs/develop-rudder-server:$VERSION
 reports:
   GinkgoUnitTestReports:
     files:
