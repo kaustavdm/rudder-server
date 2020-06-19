@@ -1,11 +1,10 @@
 version = 1
 
+test_patterns = ["/tests/**"]
+
 exclude_patterns = [
-    "imports/enterprise.go",
-    "enterprise",
-    "workspaceConfig.json",
-    "dist/",
-    "rudder-server"
+    "/resources/**",
+    "/.enterprise/**"
 ]
 
 [[analyzers]]
@@ -13,8 +12,5 @@ name = "go"
 enabled = true
 
   [analyzers.meta]
-  import_path = "github.com/kaustavdm/rudder-server"
-
-[[analyzers]]
-name = "docker"
-enabled = true
+  import_paths = ["github.com/rudderlabs/rudder-server"]
+  dependencies_vendored = true
