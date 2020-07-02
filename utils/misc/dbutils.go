@@ -61,6 +61,6 @@ func ReplaceDB(dbName, targetName string) {
 	}
 }
 
-func QuoteLiteral(literal string) string{
+func QuoteLiteral(literal string) string {
 	return pq.QuoteLiteral(literal)
 }
