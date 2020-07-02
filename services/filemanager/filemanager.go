@@ -9,7 +9,7 @@ import (
 )
 
 type UploadOutput struct {
-	Location string
+	Location   string
 	ObjectName string
 }
 
